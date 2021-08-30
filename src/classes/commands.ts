@@ -41,7 +41,7 @@ export class Commands {
         
             this.app.log.debug('Successfully reloaded application (/) commands.');
           } catch (error) {
-            this.app.log.error(error);
+            this.app.log.error(error as string);
           }
         })()
       });
@@ -55,7 +55,7 @@ export class Commands {
       
       if (this.cache.has(interaction.commandName)) {
         this.app.log.trace(`Received /${interaction.commandName}`)
-        this.cache.get(interaction.commandName)?.execute(interaction)
+        this.cache.get(interaction.commandName)?.execute(this.app, interaction)
       }
     })
   }

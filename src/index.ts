@@ -9,5 +9,5 @@ app.start()
 const events = ["exit", "SIGINT", "SIGUSR1", "SIGUSR2", "SIGTERM", "uncaughtException"]
 
 events.forEach(event => {
-  process.on(event, () => app.stop(event))
+  process.on(event, (err) => app.stop(event, err))
 })
