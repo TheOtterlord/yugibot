@@ -15,7 +15,7 @@ export default function embed_card(card: any) {
   const sets = card.card_sets.map(set => {
     return {
       name: `${set.set_name} ${set.set_rarity_code}`,
-      value: set.set_price
+      value: `$${set.set_price}`
     }
   })
   embed.addFields(sets)
