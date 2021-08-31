@@ -10,9 +10,14 @@ export default {
     .addStringOption((option) => option.setName('name').setDescription('Fuzzy name of the card').setRequired(true))
 		.setDescription('Search for a card!'),
 	async execute(app: App, interaction: CommandInteraction) {
-		const fname = interaction.options.data[0].value as string
-		const card = (await (new YGOApi()).getCards({fname}))[0]
-		if (!card) return interaction.reply(`No results for ${fname}`)
-		await interaction.reply({embeds: [embed_card(card)]})
+		try {
+			const fname = interaction.options.data[0].value as string
+			const card = (await (new YGOApi()).getCards({fname}))[0]
+			if (!card) return interaction.reply(`No results for ${fname}`)
+			await interaction.reply({embeds: [embed_card(card)]})
+		} catch (err) {
+			app.log.error(err as string)
+			await interaction.reply('Something went wrong!')
+		}
 	},
 };
