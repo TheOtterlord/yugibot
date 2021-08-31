@@ -34,5 +34,8 @@
     "nodemon": "^2.0.7",
     "paralogger": "^0.1.0",
     "ygoprodeck.js": "^0.1.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
