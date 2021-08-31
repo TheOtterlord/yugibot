@@ -1,6 +1,7 @@
 import { MessageEmbed } from "discord.js"
+import { App } from "../app"
 
-export default function embed_card(card: any) {
+export default function embed_card(app: App, card: any) {
   const embed = new MessageEmbed()
     .setTitle(card.name)
     // .setURL(`https://db.ygoprodeck.com/card/?search=${card.name}`)
@@ -16,7 +17,8 @@ export default function embed_card(card: any) {
   }
   stats += `\n**CardMarket:** €${card.card_prices[0].cardmarket_price} `
   stats += `**TCGPlayer:** $${card.card_prices[0].tcgplayer_price} `
-  stats += `**eBay:** $${card.card_prices[0].ebay_price}`
+  stats += `**eBay:** $${card.card_prices[0].ebay_price}\n`
+  stats += `**Banlist**: ${app.banlist.find(x => +x[0] === +card.id)?.[1] ?? 'Unlimited'}`
   embed.setDescription(stats)
   embed.addField('Card Text', card.desc)
   return embed

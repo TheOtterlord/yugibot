@@ -25,7 +25,7 @@ export default class Listener {
         const fname = req[0].replace(/[<>]/g, "")
         const card = (await this.api.getCards({fname}))[0]
         if (!card) return message.reply(`No results for ${fname}`)
-        const embed = embed_card(card)
+        const embed = embed_card(this.app, card)
         message.reply({embeds: [embed]})
       } catch (err) {
         this.app.log.error(err as string)
