@@ -29,7 +29,7 @@ export default class Listener {
         message.reply({embeds: [embed]})
       } catch (err) {
         this.app.log.error(err as string)
-        message.reply('Something went wrong!')
+        // message.reply('Something went wrong!')
       }
     })
   }
