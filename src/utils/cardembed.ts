@@ -7,7 +7,7 @@ export default function embed_card(app: App, card: any) {
     // .setURL(`https://db.ygoprodeck.com/card/?search=${card.name}`)
     .setColor(card.attribute ? 0xc67548 : (card.type.toLowerCase().includes('spell') ? 0x00aaff : 0xff00aa))
     .setFooter(`${card.id}`)
-    .setImage(`https://storage.googleapis.com/ygoprodeck.com/pics_small/${card.id}.jpg`)
+    .setImage(`https://storage.googleapis.com/ygoprodeck.com/pics/${card.id}.jpg`)
   let stats = `**Type:** ${card.attribute ? `${card.race}/${card.type.replace('Monster','')}` : card.type} `
   if (card.attribute) {
     stats += `**Attribute:** ${card.attribute}\n`
