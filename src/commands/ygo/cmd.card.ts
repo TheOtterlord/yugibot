@@ -15,9 +15,10 @@ export default {
 			const card = (await (new YGOApi()).getCards({fname}))[0]
 			if (!card) return interaction.reply(`No results for ${fname}`)
 			await interaction.reply({embeds: [embed_card(app, card)]})
-		} catch (err) {
-			app.log.error(err as string)
-			await interaction.reply('Something went wrong!')
+		} catch (err: any) {
+			if (err.message === 'Request failed with status code 400') return interaction.reply(`No results found`)
+      app.log.error(`${err.name}: ${err.message}\n${err.stack}`)
+      interaction.reply('Something went wrong!')
 		}
 	},
 };

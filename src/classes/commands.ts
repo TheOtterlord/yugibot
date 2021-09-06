@@ -54,7 +54,7 @@ export class Commands {
       if (!interaction.isCommand()) return
       
       if (this.cache.has(interaction.commandName)) {
-        this.app.log.trace(`Received /${interaction.commandName}`)
+        this.app.log.trace(`Received /${interaction.commandName} from ${interaction.guild?.name}`)
         this.cache.get(interaction.commandName)?.execute(this.app, interaction)
       }
     })

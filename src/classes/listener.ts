@@ -22,14 +22,16 @@ export default class Listener {
         message.content = message.content.toLowerCase()
         let req = message.content.match(/<[^>]*>/)
         if (!req) return
+        this.app.log.trace(`Detected ${req} in ${message.guild?.name}`)
         const fname = req[0].replace(/[<>]/g, "")
         const card = (await this.api.getCards({fname}))[0]
         if (!card) return message.reply(`No results for ${fname}`)
         const embed = embed_card(this.app, card)
         message.reply({embeds: [embed]})
-      } catch (err) {
-        this.app.log.error(err as string)
-        // message.reply('Something went wrong!')
+      } catch (err: any) {
+        if (err.message === 'Request failed with status code 400') return message.reply(`No results found`)
+        this.app.log.error(`${err.name}: ${err.message}\n${err.stack}`)
+        message.reply('Something went wrong!')
       }
     })
   }
