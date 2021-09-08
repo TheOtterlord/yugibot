@@ -1,4 +1,6 @@
-# YugiBot
+<div align="center">
+  <h1>YugiBot</h1>
+</div>
 
 A Yu-Gi-Oh! Discord bot in the very early stages of inception.
 

@@ -1,0 +1,51 @@
+site_name: YugiBot
+site_author: TheOtterlord
+site_description: >-
+  A Yu-Gi-Oh! Discord bot in the very early stages of inception,
+  YugiBot aims to bring an simple and snappy Yu-Gi-Oh! bot to any discord server that needs one.
+
+repo_name: TheOtterlord/yugibot
+repo_url: https://github.com/TheOtterlord/yugibot
+
+copyright: Copyright &copy; 2021 TheOtterlord
+
+theme: 
+  name: material
+  custom_dir: overrides
+
+  language: en
+  features:
+    - navigation.tabs
+  palette:
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TheOtterlord
+      name: TheOtterlord on GitHub
+
+extra_css:
+  - css/theme.css
+
+nav:
+  - Home: index.md
+  - Commands:
+    - Yu-Gi-Oh!: ygo.md
+    - Misc: misc.md
+
+edit_uri: edit/main/docs
