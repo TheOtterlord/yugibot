@@ -1,4 +1,4 @@
 ---
 template: home.html
-title: Welcome to DeckMaster
+title: The next generation Yu-Gi-Oh! bot
 ---

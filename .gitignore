@@ -77,3 +77,6 @@ typings/
 
 # typescript build
 dist/
+
+# gh-pages
+site/
