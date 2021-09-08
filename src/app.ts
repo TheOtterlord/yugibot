@@ -1,4 +1,4 @@
-import { Client, Intents, TextChannel } from "discord.js"
+import { Client, Intents } from "discord.js"
 import Logger from "paralogger"
 import { Commands } from "./classes/commands"
 import Listener from "./classes/listener"
