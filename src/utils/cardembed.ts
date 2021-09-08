@@ -20,6 +20,6 @@ export default function embed_card(app: App, card: any) {
   stats += `**eBay:** $${card.card_prices[0].ebay_price}\n`
   stats += `**Banlist**: ${app.banlist.find(x => +x[0] === +card.id)?.[1] ?? 'Unlimited'}`
   embed.setDescription(stats)
-  embed.addField('Card Text', card.desc)
+  embed.addField('Card Text', card.desc.length > 1024 ? `${card.desc.substring(0, 1020)}....` : card.desc)
   return embed
 }
