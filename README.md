@@ -15,3 +15,7 @@ A Yu-Gi-Oh! Discord bot in the very early stages of inception.
 
 You can add commands to the `src/commands` directory by creating a file matching `cmd.*.ts`.
 Use the `cmd.ping.ts` file in `src/commands/misc` as an guide.
+
+## Credits
+
+All card data is from the [YGOProDeck](https://ygoprodeck.com) API.
