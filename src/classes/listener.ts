@@ -22,7 +22,7 @@ export default class Listener {
         message.content = message.content.toLowerCase()
         let req = message.content.match(/<[^>]*>/)
         if (!req) return
-        if (req[0].startsWith('<:') || /<@!?&?[0-9]/.exec(req[0]) || /<#[0-9]/.exec(req[0])) return
+        if (req[0].startsWith('<:') || /<[a-z]:/.exec(req[0]) || /<@!?&?[0-9]/.exec(req[0]) || /<#[0-9]/.exec(req[0])) return
         this.app.log.trace(`Detected ${req} in ${message.guild?.name}`)
         const fname = req[0].replace(/[<>]/g, "")
         const card = (await this.api.getCards({fname}))[0]
