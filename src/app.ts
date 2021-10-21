@@ -3,9 +3,11 @@ import Logger from "paralogger"
 import { Commands } from "./classes/commands"
 import Listener from "./classes/listener"
 import axios from "axios"
+import YGOClient from 'ygoprodeck.js'
 
 export class App {
   bot: Client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] })
+  client: YGOClient
   commands: Commands = new Commands(this)
   listener: Listener = new Listener(this)
   log: Logger = new Logger('bot', 'trace')
@@ -18,9 +20,12 @@ export class App {
 
   constructor(token: string) {
     this.token = token
+    this.client = new YGOClient()
   }
 
   async start() {
+    await this.client.load()
+
     this.fetchBanlist()
 
     this.bot.on('ready', () => {

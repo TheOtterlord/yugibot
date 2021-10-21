@@ -4,7 +4,6 @@
 
 A Yu-Gi-Oh! Discord bot in the very early stages of inception.
 
-
 ## Self-hosting the bot
 
 1. Add your bot `TOKEN` to `.env` following the example in `.env.example`.

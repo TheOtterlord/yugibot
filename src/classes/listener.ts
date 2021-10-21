@@ -25,7 +25,7 @@ export default class Listener {
         if (req[0].startsWith('<:') || /<[a-z]:/.exec(req[0]) || /<@!?&?[0-9]/.exec(req[0]) || /<#[0-9]/.exec(req[0])) return
         this.app.log.trace(`Detected ${req} in ${message.guild?.name}`)
         const fname = req[0].replace(/[<>]/g, "")
-        const card = (await this.api.getCards({fname}))[0]
+        const card = this.app.client.search(fname)[0]
         if (!card) return message.reply(`No results for ${fname}`)
         const embed = embed_card(this.app, card)
         message.reply({embeds: [embed]})

@@ -1,7 +1,8 @@
 import { MessageEmbed } from "discord.js"
+import { Card } from "ygoprodeck.js/lib/types/index"
 import { App } from "../app"
 
-export default function embed_card(app: App, card: any) {
+export default function embed_card(app: App, card: Card) {
   const embed = new MessageEmbed()
     .setTitle(card.name)
     // .setURL(`https://db.ygoprodeck.com/card/?search=${card.name}`)

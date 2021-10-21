@@ -12,7 +12,7 @@ export default {
 	async execute(app: App, interaction: CommandInteraction) {
 		try {
 			const fname = interaction.options.data[0].value as string
-			const card = (await (new YGOApi()).getCards({fname}))[0]
+			const card = app.client.search(fname)[0]
 			if (!card) return interaction.reply(`No results for ${fname}`)
 			await interaction.reply({embeds: [embed_card(card)]})
 		} catch (err: any) {

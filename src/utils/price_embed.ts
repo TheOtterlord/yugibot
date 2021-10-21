@@ -1,6 +1,7 @@
 import { MessageEmbed } from "discord.js"
+import { Card } from "ygoprodeck.js/lib/types/index"
 
-export default function embed_card(card: any) {
+export default function embed_card(card: Card) {
   const embed = new MessageEmbed()
     .setTitle(card.name)
     .setColor(card.attribute ? 0xc67548 : (card.type.toLowerCase().includes('spell') ? 0x00aaff : 0xff00aa))
@@ -12,12 +13,12 @@ export default function embed_card(card: any) {
   stats += `**CoolStuffInc:** $${card.card_prices[0].coolstuffinc_price}`
   embed.setDescription(stats)
 
-  const sets = card.card_sets.map(set => {
+  const sets = card.card_sets?.map(set => {
     return {
       name: `${set.set_name} ${set.set_rarity_code}`,
       value: `$${set.set_price}`
     }
   })
-  embed.addFields(sets)
+  embed.addFields(sets!)
   return embed
 }
