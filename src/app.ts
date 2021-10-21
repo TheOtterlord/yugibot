@@ -1,4 +1,4 @@
-import { Client, Intents } from "discord.js"
+import { ActivitiesOptions, Client, Intents, PresenceStatusData } from "discord.js"
 import Logger from "paralogger"
 import { Commands } from "./classes/commands"
 import Listener from "./classes/listener"
@@ -36,6 +36,7 @@ export class App {
 
     await this.bot.login(this.token)
     this.started = true
+    this.active()
   }
 
   async fetchBanlist() {
@@ -46,6 +47,22 @@ export class App {
     })
     const json = await data.data
     this.banlist = json.data.map(card => card.banlist_info.ban_tcg ? [card.id, card.banlist_info.ban_tcg] : undefined).filter(x => x)
+  }
+
+  active(activity: ActivitiesOptions = {name: 'Yu-Gi-Oh!', type: 'PLAYING'}) {
+    this.setPresence('online', activity)
+    setTimeout(() => {
+      this.setPresence('idle', activity)
+    }, 300000)
+  }
+
+  setPresence(status: PresenceStatusData, activity: ActivitiesOptions) {
+    if (!this.started) return
+
+    this.bot.user?.setPresence({
+      status: status,
+      activities: [activity]
+    })
   }
 
   async stop(event: string, error: any) {

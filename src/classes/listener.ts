@@ -29,6 +29,7 @@ export default class Listener {
         if (!card) return message.reply(`No results for ${fname}`)
         const embed = embed_card(this.app, card)
         message.reply({embeds: [embed]})
+        this.app.active()
       } catch (err: any) {
         if (err.message === 'Request failed with status code 400') return message.reply(`No results found`)
         this.app.log.error(`${err.name}: ${err.message}\n${err.stack}`)
