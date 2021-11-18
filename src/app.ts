@@ -24,9 +24,7 @@ export class App {
   }
 
   async start() {
-    await this.client.load()
-
-    this.fetchBanlist()
+    await this.loadCards()
 
     this.bot.on('ready', () => {
       this.log.info('Started bot')
@@ -37,6 +35,15 @@ export class App {
     await this.bot.login(this.token)
     this.started = true
     this.active()
+
+    setInterval(() => {
+      this.loadCards()
+    }, 24 * 60 * 60 * 1000)
+  }
+
+  async loadCards() {
+    await this.client.load()
+    this.fetchBanlist()
   }
 
   async fetchBanlist() {
