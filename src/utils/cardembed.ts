@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js"
-import { Card } from "ygoprodeck.js/lib/types/index"
+import { Card } from "ygoprodeck.js/lib/types"
 import { App } from "../app"
 
 export default function embed_card(app: App, card: Card) {

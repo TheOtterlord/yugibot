@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction } from 'discord.js';
-import { Card } from 'ygoprodeck.js/lib/types/index';
+import { Card } from 'ygoprodeck.js/lib/types';
 import { App } from '../../app';
 import embed_card from '../../utils/cardembed';
 
