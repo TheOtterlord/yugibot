@@ -12,7 +12,8 @@ export default {
 	async execute(app: App, interaction: CommandInteraction) {
 		try {
 			const fname = interaction.options.data[0].value as string
-			const card = app.client.search(fname)[0]
+			let card = app.client.search(fname)[0]
+			if (!card) card = app.client.search(fname.replace('&', 'and'))[0]
 			if (!card) return interaction.reply(`No results for ${fname}`)
 			await interaction.reply({embeds: [embed_card(app, card)]})
 		} catch (err: any) {
