@@ -1,5 +1,5 @@
 import { ActivitiesOptions, Client, Intents, PresenceStatusData } from "discord.js"
-import Logger from "paralogger"
+import Logger, { logToConsole } from "paralogger"
 import { Commands } from "./classes/commands"
 import Listener from "./classes/listener"
 import axios from "axios"
@@ -10,7 +10,7 @@ export class App {
   client: YGOClient
   commands: Commands = new Commands(this)
   listener: Listener = new Listener(this)
-  log: Logger = new Logger('bot', 'trace')
+  log: Logger = new Logger('bot')
 
   started: boolean = false
 
@@ -24,6 +24,8 @@ export class App {
   }
 
   async start() {
+    this.log.on('log', logToConsole())
+
     await this.loadCards()
 
     this.bot.on('ready', () => {
