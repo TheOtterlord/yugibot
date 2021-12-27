@@ -29,7 +29,7 @@ export class App {
     await this.loadCards()
 
     this.bot.on('ready', () => {
-      this.log.info('Started bot')
+      this.log.info(`Started bot: Serving ${this.bot.guilds.cache.size} guilds`)
       this.commands.register(`${__dirname}/commands`)
       this.listener.startListener()
     })
@@ -58,7 +58,7 @@ export class App {
     this.banlist = json.data.map(card => card.banlist_info.ban_tcg ? [card.id, card.banlist_info.ban_tcg] : undefined).filter(x => x)
   }
 
-  active(activity: ActivitiesOptions = {name: 'Yu-Gi-Oh!', type: 'PLAYING'}) {
+  active(activity: ActivitiesOptions = {name: `Yu-Gi-Oh! in ${this.bot.guilds.cache.size}`, type: 'PLAYING'}) {
     this.setPresence('online', activity)
     setTimeout(() => {
       this.setPresence('idle', activity)
@@ -76,10 +76,10 @@ export class App {
 
   async stop(event: string, error: any) {
     if (!this.started) return
+    this.started = false
 
+    if (error) this.log.error(error as string)
     this.bot.destroy()
     this.log.info('Stopped bot with event: '+event)
-    if (error) this.log.error(error as string)
-    this.started = false
   }
 }
