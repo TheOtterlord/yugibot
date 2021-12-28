@@ -58,7 +58,7 @@ export class App {
     this.banlist = json.data.map(card => card.banlist_info.ban_tcg ? [card.id, card.banlist_info.ban_tcg] : undefined).filter(x => x)
   }
 
-  active(activity: ActivitiesOptions = {name: `Yu-Gi-Oh! in ${this.bot.guilds.cache.size}`, type: 'PLAYING'}) {
+  active(activity: ActivitiesOptions = {name: `Yu-Gi-Oh! in ${this.bot.guilds.cache.size} servers`, type: 'PLAYING'}) {
     this.setPresence('online', activity)
     setTimeout(() => {
       this.setPresence('idle', activity)
