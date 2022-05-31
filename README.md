@@ -1,5 +1,6 @@
 <div align="center">
   <h1>YugiBot</h1>
+  <img src="docs/assets/transparent.png">
 </div>
 
 A Yu-Gi-Oh! Discord bot in the very early stages of inception.
